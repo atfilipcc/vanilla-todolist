@@ -65,7 +65,7 @@ const checkDisplayMarkAsCompleted = () => {
   const buttons = document.querySelectorAll('.toggleButton');
   for (let i = 0; i < buttons.length; i += 1) {
     if (buttons[i].parentNode.parentNode.classList.contains('completed')) {
-      buttons[i].textContent = '☑';
+      buttons[i].textContent = '✓';
     } else {
       buttons[i].textContent = '☐';
     }
