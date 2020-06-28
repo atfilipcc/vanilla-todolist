@@ -845,7 +845,7 @@ button {
   font-family: Segoe UI Symbol;
 }
 .main__item--buttons .toggleButton {
-  padding: 0 0 0 0.2rem;
+  padding: 0.3rem 0 0 0.2rem;
 }
 
 .main__item--buttons * {
