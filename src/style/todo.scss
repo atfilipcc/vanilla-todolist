@@ -30,6 +30,7 @@ $desktop-breakpoint: 45rem;
 
 .header__title {
   font-size: $l-size;
+  text-align: center;
   margin: 0;
   margin-left: $l-size;
   font-family: 'Roboto', sans-serif;
@@ -251,6 +252,11 @@ $desktop-breakpoint: 45rem;
   .header {
     margin-bottom: $xl-size;
   }
+
+  .header__title {
+    text-align: left;
+  }
+
   .main__form {
     flex-direction: row;
   }
