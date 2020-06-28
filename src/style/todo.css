@@ -738,21 +738,17 @@ button {
   display: flex;
   flex-direction: column;
   padding: 1.6rem;
-}
-
-.main__form--inputs {
-  display: flex;
-  flex-direction: column;
-  padding: 1.6rem;
+  align-items: baseline;
 }
 
 .main__form--input {
   background: #333745;
+  height: 4.8rem;
   display: flex;
   border: none;
   color: #ccd4f7;
   border-bottom: 0.3rem solid #282b36;
-  margin: 0 0 1.2rem 0;
+  margin: 0;
   flex-grow: 1;
   width: 100%;
   padding: 1.2rem;

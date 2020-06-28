@@ -1,11 +1,9 @@
-// Colors
 $off-black: #20222b;
 $text-blue: #ccd4f7;
 $dark-blue: #333745;
 $blue: #3c4251;
 $light-blue: #464b5e;
 
-// Spacing
 $s-size: 1.2rem;
 $m-size: 1.6rem;
 $l-size: 2.8rem;
@@ -56,21 +54,17 @@ $desktop-breakpoint: 45rem;
   display: flex;
   flex-direction: column;
   padding: $m-size;
-}
-
-.main__form--inputs {
-    display: flex;
-    flex-direction: column;
-    padding: $m-size;
+  align-items: baseline;
 }
 
 .main__form--input {
   background: $dark-blue;
+  height: $xl-size;
   display: flex;
   border: none;
   color: $text-blue;
   border-bottom: .3rem solid darken($dark-blue, 5%);
-  margin: 0 0 $s-size 0;
+  margin: 0;;
   flex-grow: 1;
   width: 100%;
   padding: $s-size;
