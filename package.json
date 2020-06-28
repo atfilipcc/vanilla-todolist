@@ -4,6 +4,7 @@
   "description": "## Salt ToDo",
   "main": "index.js",
   "scripts": {
+    "sass-watch": "sass --watch src/style/todo.scss:src/style/todo.css",
     "lint": "eslint . --fix",
     "dev": "webpack-dev-server"
   },

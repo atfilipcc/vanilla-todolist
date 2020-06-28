@@ -785,10 +785,8 @@ button {
 
 .main__topbar, .main__list--separator {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   width: 100%;
-  align-items: baseline;
   background: #3c4251;
   color: #ccd4f7;
   padding: 1.6rem;
@@ -800,6 +798,11 @@ button {
   width: 100%;
   font-family: Roboto;
   font-weight: 700;
+}
+
+.main__topbar--buttons {
+  display: flex;
+  justify-content: center;
 }
 
 .main__topbar--buttons * {
@@ -818,7 +821,6 @@ button {
 
 .main__item {
   display: flex;
-  z-index: 999;
   width: 60rem;
   max-width: 100%;
   align-items: center;
@@ -896,6 +898,7 @@ button {
 }
 
 .main__list--separator {
+  text-align: center;
   background-color: #333745;
   font-weight: bold;
   font-size: 1.8rem;

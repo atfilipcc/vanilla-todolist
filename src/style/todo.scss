@@ -3,7 +3,6 @@ $off-black: #20222b;
 $text-blue: #ccd4f7;
 $dark-blue: #333745;
 $blue: #3c4251;
-$purple: #8357c5;
 $light-blue: #464b5e;
 
 // Spacing
@@ -105,10 +104,8 @@ $desktop-breakpoint: 45rem;
 
 .main__topbar {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   width: 100%;
-  align-items: baseline;
   background: $blue;
   color: $text-blue;
   padding: $m-size;
@@ -120,6 +117,11 @@ $desktop-breakpoint: 45rem;
   width: 100%;
   font-family: Roboto;
   font-weight: 700;
+}
+
+.main__topbar--buttons {
+  display: flex;
+  justify-content: center;
 }
 
 .main__topbar--buttons * {
@@ -138,7 +140,6 @@ $desktop-breakpoint: 45rem;
 
 .main__item {
   display: flex;
-  z-index: 999;
   width: 60rem;
   max-width: 100%;
   align-items: center;
@@ -218,6 +219,7 @@ $desktop-breakpoint: 45rem;
 
 .main__list--separator {
   @extend .main__topbar;
+  text-align: center;
   background-color: $dark-blue;
   font-weight: bold;
   font-size: 1.8rem;
