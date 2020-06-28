@@ -11,7 +11,6 @@ const getLocalStorage = () => {
 // Create dynamic elements
 const mountToggleButton = () => {
   const toggleButton = document.createElement('button');
-  toggleButton.textContent = '☐';
   toggleButton.className = 'toggleButton';
   return toggleButton;
 };
@@ -65,9 +64,9 @@ const checkDisplayMarkAsCompleted = () => {
   const buttons = document.querySelectorAll('.toggleButton');
   for (let i = 0; i < buttons.length; i += 1) {
     if (buttons[i].parentNode.parentNode.classList.contains('completed')) {
-      buttons[i].textContent = '\u2713';
+      buttons[i].setAttribute('id', 'checked');
     } else {
-      buttons[i].textContent = '\u2610';
+      buttons[i].setAttribute('id', 'unchecked');
     }
   }
 };

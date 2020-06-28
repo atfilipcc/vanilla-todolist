@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -846,6 +847,14 @@ button {
 }
 .main__item--buttons .toggleButton {
   padding: 0.3rem 0 0 0.2rem;
+}
+
+#checked:after {
+  content: "☑︎";
+}
+
+#unchecked:after {
+  content: "☐︎";
 }
 
 .main__item--buttons * {

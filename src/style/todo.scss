@@ -164,7 +164,14 @@ $desktop-breakpoint: 45rem;
   }
 .toggleButton {
   padding: 0.3rem 0 0 0.2rem;
+  }
 }
+
+#checked:after {
+  content: '\2611\00FE0E';
+}
+#unchecked:after {
+  content: '\2610\00FE0E';
 }
 
 .main__item--buttons * {
