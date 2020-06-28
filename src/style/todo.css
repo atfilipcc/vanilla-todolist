@@ -945,6 +945,7 @@ button {
   .main__topbar, .main__list--separator {
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
   }
 
   .main__topbar--title {

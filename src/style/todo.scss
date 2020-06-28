@@ -266,6 +266,7 @@ $desktop-breakpoint: 45rem;
   .main__topbar {
     flex-direction: row;
     justify-content: space-between;
+    align-items: baseline;
   }
   .main__topbar--title {
     width: auto;
