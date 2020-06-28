@@ -20,7 +20,6 @@ $desktop-breakpoint: 45rem;
   padding: 0 $m-size;
 }
 
-
 .header {
   background: $off-black;
   color: white;
@@ -54,7 +53,8 @@ $desktop-breakpoint: 45rem;
 .main__form {
   display: flex;
   flex-direction: column;
-  padding: $m-size;
+  justify-content: center;
+  padding: $s-size;
   align-items: baseline;
 }
 
@@ -64,8 +64,8 @@ $desktop-breakpoint: 45rem;
   display: flex;
   border: none;
   color: $text-blue;
-  border-bottom: .3rem solid darken($dark-blue, 5%);
-  margin: 0;;
+  border-bottom: .4rem solid darken($dark-blue, 5%);
+  margin-bottom: $s-size;
   flex-grow: 1;
   width: 100%;
   padding: $s-size;
@@ -73,6 +73,8 @@ $desktop-breakpoint: 45rem;
 
 .main__form--submit {
   height: $xl-size;
+  width: 100%;
+  margin: 0 auto;
   color: white;
   background: hotpink;
   border-bottom: .4rem solid darken(hotpink, 10%);
@@ -252,13 +254,8 @@ $desktop-breakpoint: 45rem;
   .header {
     margin-bottom: $xl-size;
   }
-
   .header__title {
     text-align: left;
-  }
-
-  .main__form {
-    flex-direction: row;
   }
 }
 
@@ -273,6 +270,13 @@ $desktop-breakpoint: 45rem;
   }
   .main__topbar--buttons {
     width: auto;
+  }
+  .main__form {
+    flex-direction: row;
+  }
+  .main__form--submit {
+    width: auto;
+    margin-left: $s-size;
   }
   .main__item--label {
     text-align: left;
