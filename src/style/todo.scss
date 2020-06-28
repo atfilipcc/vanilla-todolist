@@ -157,22 +157,27 @@ $desktop-breakpoint: 45rem;
 .main__item--buttons {
   display: flex;
 
-.toggleButton, .deleteButton {
+.deleteButton {
   font-size: 3.5rem !important;
   font-family: Segoe UI Symbol;
 
   }
+}
 .toggleButton {
-  padding-top: 0.8rem;
-  padding-left: 0.6rem;
-  }
+  font-family: Segoe UI Symbol;
 }
 
-#checked:after {
+.toggleButton, #checked:after {
   content: '\2611\00FE0E';
+  text-align: center;
+  padding: 0.2rem 0 0 0.1rem !important;
+  font-size: 5rem;
 }
-#unchecked:after {
+.toggleButton, #unchecked:after {
   content: '\2610\00FE0E';
+  text-align: center;
+  padding: 0.2rem 0 0 0.1rem !important;
+  font-size: 5rem;
 }
 
 .main__item--buttons * {
