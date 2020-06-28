@@ -1,0 +1,17 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $dark-blue;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  font-size: $m-size;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-size: $m-size;
+  margin: $s-size;
+  padding: $s-size;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&lt;/salt&gt; :: ToDo</title>
+  <link rel="stylesheet" type="text/css" href="./style/todo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <script defer src="./js/todo.js"></script>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1 class="header__title">What will you do?</h1>
+    </header>
+
+  <div class="container">
+  <main class="main">
+    <div class="main__topbar">
+    <h1 class="main__topbar--title">Your Todo List</h1>
+    <section class="main__topbar--buttons">
+      <button id="toggleForm" class="main__toggleform">New Todo</button>
+      <button id="toggleAll" class="main__toggleall">Toggle All</button>
+    </section>
+    </div>
+    <form id="newTodo" class="main__form hide">
+      <input class="main__form--input" id="title" placeholder="What are you going to do?" type="text">
+      <button type="submit" class="main__form--submit">Add</button>
+    </form>
+    <ul id="list" class="main__list">
+    </ul>
+    <div class="main__bottom--space"></div>
+  </main>
+</div>
+</body>
+
+</html>
