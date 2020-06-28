@@ -160,10 +160,12 @@ $desktop-breakpoint: 45rem;
 .toggleButton, .deleteButton {
   font-size: 3.5rem !important;
   font-family: Segoe UI Symbol;
+  content: 'Hello';
+  content: "\25b6\00fe0e";
 
   }
 .toggleButton {
-  padding: 0 0 0 0.2rem;
+  padding: 0;
 }
 }
 
