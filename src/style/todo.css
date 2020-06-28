@@ -807,6 +807,8 @@ button {
 .main__topbar--buttons * {
   color: white;
   font-weight: 800;
+  align-items: center;
+  justify-content: center;
   background: hotpink;
   border-bottom: 0.4rem solid #ff369b;
 }
@@ -838,13 +840,18 @@ button {
 .main__item--buttons {
   display: flex;
 }
+.main__item--buttons .toggleButton, .main__item--buttons .deleteButton {
+  font-size: 3.5rem !important;
+}
+.main__item--buttons .toggleButton {
+  padding: 0 0 0.4rem 0.2rem;
+}
 
 .main__item--buttons * {
   height: 4.8rem;
   width: 4.8rem;
   background: hotpink;
   text-align: center;
-  font-size: 1.5rem;
   font-weight: 600;
   color: white;
   padding: 0.4rem;

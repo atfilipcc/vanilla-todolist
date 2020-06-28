@@ -11,7 +11,7 @@ const getLocalStorage = () => {
 // Create dynamic elements
 const mountToggleButton = () => {
   const toggleButton = document.createElement('button');
-  toggleButton.textContent = '✓';
+  toggleButton.textContent = '☐';
   toggleButton.className = 'toggleButton';
   return toggleButton;
 };
@@ -25,7 +25,7 @@ const mountEditButton = () => {
 
 const mountDeleteButton = () => {
   const deleteButton = document.createElement('button');
-  deleteButton.textContent = '✕';
+  deleteButton.textContent = '×';
   deleteButton.className = 'deleteButton';
   return deleteButton;
 };
@@ -57,6 +57,17 @@ const checkDisplaySeparator = () => {
       separator.classList.add('hide');
     } else {
       separator.classList.remove('hide');
+    }
+  }
+};
+
+const checkDisplayMarkAsCompleted = () => {
+  const buttons = document.querySelectorAll('.toggleButton');
+  for (let i = 0; i < buttons.length; i += 1) {
+    if (buttons[i].parentNode.parentNode.classList.contains('completed')) {
+      buttons[i].textContent = '☑';
+    } else {
+      buttons[i].textContent = '☐';
     }
   }
 };
@@ -94,6 +105,7 @@ const mountTodos = () => {
       }
       list.insertBefore(newTodo, list.firstChild);
       list.appendChild(mountSeparator());
+      checkDisplayMarkAsCompleted();
       checkDisplaySeparator();
       saveLocalStorage();
     });

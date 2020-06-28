@@ -124,6 +124,8 @@ $desktop-breakpoint: 45rem;
 .main__topbar--buttons * {
   color: white;
   font-weight: 800;
+  align-items: center;
+  justify-content: center;
   background: hotpink;
   border-bottom: .4rem solid darken(hotpink, 10%);
 }
@@ -154,6 +156,14 @@ $desktop-breakpoint: 45rem;
 
 .main__item--buttons {
   display: flex;
+
+.toggleButton, .deleteButton {
+  font-size: 3.5rem !important;
+
+  }
+.toggleButton {
+  padding: 0 0 0.4rem 0.2rem;
+}
 }
 
 .main__item--buttons * {
@@ -161,7 +171,6 @@ $desktop-breakpoint: 45rem;
   width: $xl-size;
   background: hotpink;;
   text-align: center;
-  font-size: 1.5rem;
   font-weight: 600;
   color: white;
   padding: 0.4rem;
