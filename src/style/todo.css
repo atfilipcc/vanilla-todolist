@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -844,11 +843,9 @@ button {
 .main__item--buttons .toggleButton, .main__item--buttons .deleteButton {
   font-size: 3.5rem !important;
   font-family: Segoe UI Symbol;
-  content: "Hello";
-  content: "▶︎";
 }
 .main__item--buttons .toggleButton {
-  padding: 0;
+  padding: 0 0 0 0.2rem;
 }
 
 .main__item--buttons * {
