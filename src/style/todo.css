@@ -845,23 +845,23 @@ button {
   font-size: 3.5rem !important;
   font-family: Segoe UI Symbol;
 }
-
-.toggleButton {
-  font-family: Segoe UI Symbol;
+.main__item--buttons .editButton, .main__item--buttons .toggleButton, .main__item--buttons #unchecked:after {
+  color: white;
+  font-weight: 800;
 }
 
 .toggleButton, #checked:after {
-  content: "☑︎";
+  content: "✓︎";
   text-align: center;
-  padding: 0.2rem 0 0 0.1rem !important;
-  font-size: 5rem;
+  padding: 0 !important;
+}
+
+#checked:after {
+  font-size: 3rem;
 }
 
 .toggleButton, #unchecked:after {
-  content: "☐︎";
-  text-align: center;
-  padding: 0.2rem 0 0 0.1rem !important;
-  font-size: 5rem;
+  content: "Done";
 }
 
 .main__item--buttons * {

@@ -162,22 +162,25 @@ $desktop-breakpoint: 45rem;
   font-family: Segoe UI Symbol;
 
   }
-}
-.toggleButton {
-  font-family: Segoe UI Symbol;
+  .editButton {
+    color: white;
+    font-weight: 800;
+  }
 }
 
 .toggleButton, #checked:after {
-  content: '\2611\00FE0E';
+  content: '\2713\00FE0E';
   text-align: center;
-  padding: 0.2rem 0 0 0.1rem !important;
-  font-size: 5rem;
+  padding: 0 !important;
 }
+
+#checked:after {
+  font-size: 3rem;
+}
+
 .toggleButton, #unchecked:after {
-  content: '\2610\00FE0E';
-  text-align: center;
-  padding: 0.2rem 0 0 0.1rem !important;
-  font-size: 5rem;
+  content: 'Done';
+ @extend .editButton;
 }
 
 .main__item--buttons * {
