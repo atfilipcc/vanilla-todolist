@@ -41,17 +41,6 @@ const checkDisplaySeparator = () => {
   }
 };
 
-const checkDisplayMarkAsCompleted = () => {
-  const buttons = document.querySelectorAll('.toggleButton');
-  for (let i = 0; i < buttons.length; i += 1) {
-    if (buttons[i].parentNode.parentNode.classList.contains('completed')) {
-      buttons[i].setAttribute('id', 'checked');
-    } else {
-      buttons[i].setAttribute('id', 'unchecked');
-    }
-  }
-};
-
 const createMountedElements = () => {
   const li = document.createElement('li');
   const label = document.createElement('label');
@@ -60,7 +49,7 @@ const createMountedElements = () => {
 };
 
 const createMountedButtons = (buttonDiv) => {
-  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'editButton', 'Edit'));
+  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'editButton', ''));
   buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'toggleButton', ''));
   buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'deleteButton', '×'));
   buttonDiv.classList.add('main__item--buttons');
@@ -85,7 +74,6 @@ const mountTodos = () => {
       }
       list.insertBefore(newTodo, list.firstChild);
       list.appendChild(mountSeparator());
-      checkDisplayMarkAsCompleted();
       checkDisplaySeparator();
       saveLocalStorage();
     });
@@ -165,12 +153,6 @@ const handleToggleCompleted = (index) => {
   mountTodos();
 };
 
-const handleChangeEditButton = (listItem) => {
-  const button = listItem.querySelector('.editButton');
-  const text = button.textContent === 'Edit' ? 'Save' : 'Edit';
-  button.textContent = text;
-};
-
 const handleAddEditListeners = (input, e, callback) => {
   input.focus();
   input.addEventListener('keyup', (event) => {
@@ -193,7 +175,6 @@ const handleEditTodo = (e) => {
   const label = clickedListItem.querySelector('label');
   const input = clickedListItem.querySelector('input[type=text');
   const editing = clickedListItem.classList.contains('editing');
-  handleChangeEditButton(clickedListItem);
   if (editing) {
     label.innerText = input.value;
     handleEditSaveNewValue(clickedListItem, input.value);
