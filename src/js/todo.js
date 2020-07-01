@@ -8,26 +8,7 @@ const getLocalStorage = () => {
   todos = JSON.parse(localStorage.getItem('todos'));
 };
 
-// Create dynamic elements
-const mountToggleButton = () => {
-  const toggleButton = document.createElement('button');
-  toggleButton.className = 'toggleButton';
-  return toggleButton;
-};
-
-const mountEditButton = () => {
-  const editButton = document.createElement('button');
-  editButton.textContent = 'Edit';
-  editButton.className = 'editButton';
-  return editButton;
-};
-
-const mountDeleteButton = () => {
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = '×';
-  deleteButton.className = 'deleteButton';
-  return deleteButton;
-};
+const mountProgrammaticButton = (type, className, content) => `<${type} class=${className}>${content}</${type}>`;
 
 const mountEditInput = () => {
   const editInput = document.createElement('input');
@@ -79,8 +60,8 @@ const createMountedElements = () => {
 };
 
 const createMountedButtons = (buttonDiv) => {
-  buttonDiv.appendChild(mountEditButton());
-  buttonDiv.appendChild(mountToggleButton());
+  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'editButton', 'Edit'));
+  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'toggleButton', ''));
   buttonDiv.classList.add('main__item--buttons');
 };
 
@@ -100,7 +81,7 @@ const mountTodos = () => {
       createMountedButtons(newTodoButtons);
       if (todo.completed === true) {
         newTodo.classList.add('completed');
-        newTodoButtons.insertBefore(mountDeleteButton(), newTodoButtons.firstChild);
+        newTodoButtons.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'deleteButton', '×'));
       }
       list.insertBefore(newTodo, list.firstChild);
       list.appendChild(mountSeparator());
@@ -111,7 +92,6 @@ const mountTodos = () => {
   }
 };
 
-// Todo functions
 const newTodo = (todoDesc) => {
   const todoToAdd = {
     todoDesc,
@@ -272,6 +252,7 @@ const mountStaticEventListeners = () => {
 
   toggleNewFormVisibility.addEventListener('click', () => {
     newTodoForm.classList.toggle('hide');
+    newTodoForm.children[0].focus();
   });
 };
 
