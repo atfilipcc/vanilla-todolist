@@ -62,6 +62,7 @@ const createMountedElements = () => {
 const createMountedButtons = (buttonDiv) => {
   buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'editButton', 'Edit'));
   buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'toggleButton', ''));
+  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'deleteButton', '×'));
   buttonDiv.classList.add('main__item--buttons');
 };
 
@@ -81,7 +82,6 @@ const mountTodos = () => {
       createMountedButtons(newTodoButtons);
       if (todo.completed === true) {
         newTodo.classList.add('completed');
-        newTodoButtons.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'deleteButton', '×'));
       }
       list.insertBefore(newTodo, list.firstChild);
       list.appendChild(mountSeparator());
