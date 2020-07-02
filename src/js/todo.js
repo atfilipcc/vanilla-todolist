@@ -21,7 +21,7 @@ const mountEditInput = () => {
 const mountSeparator = (list) => {
   const separator = document.querySelector('.main__list--separator');
   if (!separator) {
-    list.insertAdjacentHTML('afterend', mountProgrammaticElement('p', 'main__list--separator', 'Completed Todos'));
+    list.insertAdjacentHTML('beforeend', mountProgrammaticElement('p', 'main__list--separator', 'Completed Todos'));
   }
 
   return separator;
