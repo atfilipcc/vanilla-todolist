@@ -252,11 +252,11 @@ $desktop-breakpoint: 45rem;
 	order: 3;
 }
 
-.main__list--separator {
+p.main__list--separator {
   display: none;
 }
 
-.completed .main__list--separator {
+li.completed ~ p.main__list--separator {
   display: block;
 }
 

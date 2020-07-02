@@ -23,6 +23,7 @@ const mountSeparator = (list) => {
   if (!separator) {
     list.insertAdjacentHTML('afterbegin', mountProgrammaticElement('p', 'main__list--separator', 'Completed Todos'));
   }
+
   return separator;
 };
 
