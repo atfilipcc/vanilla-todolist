@@ -936,6 +936,14 @@ button {
   order: 3;
 }
 
+.main__list--separator {
+  display: none;
+}
+
+.completed .main__list--separator {
+  display: block;
+}
+
 .main__item input[type=text] {
   display: none;
 }

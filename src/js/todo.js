@@ -8,7 +8,7 @@ const getLocalStorage = () => {
   todos = JSON.parse(localStorage.getItem('todos'));
 };
 
-const mountProgrammaticButton = (type, className, content) => `<${type} class=${className}>${content}</${type}>`;
+const mountProgrammaticElement = (type, className, content) => `<${type} class=${className}>${content}</${type}>`;
 
 const mountEditInput = () => {
   const editInput = document.createElement('input');
@@ -18,27 +18,12 @@ const mountEditInput = () => {
   return editInput;
 };
 
-const mountSeparator = () => {
+const mountSeparator = (list) => {
   const separator = document.querySelector('.main__list--separator');
   if (!separator) {
-    const newSeparator = document.createElement('div');
-    newSeparator.textContent = 'Completed Todos';
-    newSeparator.classList.add('main__list--separator');
-    return newSeparator;
+    list.insertAdjacentHTML('afterbegin', mountProgrammaticElement('p', 'main__list--separator', 'Completed Todos'));
   }
   return separator;
-};
-
-const checkDisplaySeparator = () => {
-  const separator = document.querySelector('.main__list--separator');
-  if (separator) {
-    const completedTodos = document.querySelector('li.completed');
-    if (completedTodos === null) {
-      separator.classList.add('hide');
-    } else {
-      separator.classList.remove('hide');
-    }
-  }
 };
 
 const createMountedElements = () => {
@@ -49,9 +34,9 @@ const createMountedElements = () => {
 };
 
 const createMountedButtons = (buttonDiv) => {
-  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'editButton', ''));
-  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'toggleButton', ''));
-  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticButton('button', 'deleteButton', '×'));
+  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticElement('button', 'editButton', ''));
+  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticElement('button', 'toggleButton', ''));
+  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticElement('button', 'deleteButton', '×'));
   buttonDiv.classList.add('main__item--buttons');
 };
 
@@ -73,8 +58,8 @@ const mountTodos = () => {
         newTodo.classList.add('completed');
       }
       list.insertBefore(newTodo, list.firstChild);
-      list.appendChild(mountSeparator());
-      checkDisplaySeparator();
+      mountSeparator(list);
+      // checkDisplaySeparator();
       saveLocalStorage();
     });
   }
@@ -88,6 +73,7 @@ const newTodo = (todoDesc) => {
   const newTodoList = todos || [];
   newTodoList.push(todoToAdd);
   todos = newTodoList;
+  mountTodos();
 };
 
 const deleteTodo = (position) => {
@@ -104,6 +90,7 @@ const toggleCompletedTodo = (index) => {
     completed: !todos[index].completed,
   };
   todos[index] = updatedTodo;
+  mountTodos();
 };
 
 const toggleAllTodos = () => {
@@ -112,7 +99,7 @@ const toggleAllTodos = () => {
     if (todo.completed === true) completedTodos += 1;
   });
   for (let i = 0; i < todos.length; i += 1) {
-    const allCompleted = completedTodos === todos.length;
+    const allCompleted = (completedTodos === todos.length);
     const updatedTodo = {
       ...todos[i],
       completed: !allCompleted,
@@ -135,21 +122,11 @@ const handleRemoveDynamicListeners = (input, e, callback) => {
   });
 };
 
-const handleNewTodo = (todoDesc) => {
-  newTodo(todoDesc);
-  mountTodos();
-};
-
 const handleDeleteTodo = (index, input, e, handleEditTodo) => {
   handleRemoveDynamicListeners(input, e, handleEditTodo);
   handleRemoveDOMElement(index);
   deleteTodo(index);
   saveLocalStorage();
-  mountTodos();
-};
-const handleToggleCompleted = (index) => {
-  toggleCompletedTodo(index);
-  mountSeparator();
   mountTodos();
 };
 
@@ -191,19 +168,16 @@ const mountDelegatedButtonEventListeners = (list) => {
   list.addEventListener('click', (e) => {
     const input = e.target.parentNode;
     if (e.target.classList.contains('main__item')) {
-      list.classList.toggle('completed');
-      handleToggleCompleted(parseInt(e.target.id, 10));
+      toggleCompletedTodo(parseInt(e.target.id, 10));
     }
     if (e.target.classList.contains('main__item--label')) {
-      list.classList.toggle('completed');
-      handleToggleCompleted(parseInt(input.id, 10));
+      toggleCompletedTodo(parseInt(input.id, 10));
     }
     if (e.target.className === 'deleteButton') {
       handleDeleteTodo(parseInt(input.parentNode.id, 10), input, e, handleEditTodo);
     }
     if (e.target.className === 'toggleButton') {
-      list.classList.toggle('completed');
-      handleToggleCompleted(parseInt(e.target.parentNode.parentNode.id, 10));
+      toggleCompletedTodo(parseInt(e.target.parentNode.parentNode.id, 10));
       handleEditTodo(e);
     }
     if (e.target.className === 'editButton') {
@@ -222,7 +196,7 @@ const mountStaticEventListeners = () => {
   newTodoForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const input = e.target[0].value;
-    handleNewTodo(input);
+    newTodo(input);
     newTodoForm.reset();
     newTodoForm.classList.add('hide');
   });
