@@ -73,7 +73,6 @@ const toggleAllTodos = () => {
 };
 
 // Handlers
-
 const handleAddEditListeners = (input, e, callback) => {
   input.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
