@@ -940,7 +940,7 @@ p.main__list--separator {
   display: none;
 }
 
-.completed ~ p.main__list--separator {
+li.completed ~ p.main__list--separator {
   display: block;
 }
 

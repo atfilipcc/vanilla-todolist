@@ -10,57 +10,23 @@ const getLocalStorage = () => {
 
 const mountProgrammaticElement = (type, className, content) => `<${type} class=${className}>${content}</${type}>`;
 
-const mountEditInput = () => {
-  const editInput = document.createElement('input');
-  editInput.type = 'text';
-  editInput.classList.add('main__form--input');
-  editInput.setAttribute('placeholder', editInput.value);
-  return editInput;
-};
-
-const mountSeparator = (list) => {
-  const separator = document.querySelector('.main__list--separator');
-  if (!separator) {
-    list.insertAdjacentHTML('beforeend', mountProgrammaticElement('p', 'main__list--separator', 'Completed Todos'));
-  }
-
-  return separator;
-};
-
-const createMountedElements = () => {
-  const li = document.createElement('li');
-  const label = document.createElement('label');
-  const div = document.createElement('div');
-  return [li, label, div];
-};
-
-const createMountedButtons = (buttonDiv) => {
-  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticElement('button', 'editButton', ''));
-  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticElement('button', 'toggleButton', ''));
-  buttonDiv.insertAdjacentHTML('afterbegin', mountProgrammaticElement('button', 'deleteButton', '×'));
-  buttonDiv.classList.add('main__item--buttons');
-};
-
 const mountTodos = () => {
   const list = document.querySelector('#list');
-  list.innerHTML = '';
+  list.innerHTML = mountProgrammaticElement('p', 'main__list--separator', 'Completed Todos');
   if (todos) {
     todos.forEach((todo, index) => {
-      const [newTodo, newTodoLabel, newTodoButtons] = createMountedElements();
-      newTodoLabel.innerText = `${todo.todoDesc}`;
-      newTodoLabel.classList.add('main__item--label');
-      newTodo.id = index;
-      newTodo.classList.add('main__item');
-      newTodo.appendChild(mountEditInput());
-      newTodo.appendChild(newTodoLabel);
-      newTodo.appendChild(newTodoButtons);
-      createMountedButtons(newTodoButtons);
-      if (todo.completed === true) {
-        newTodo.classList.add('completed');
-      }
-      list.insertBefore(newTodo, list.firstChild);
-      mountSeparator(list);
-      // checkDisplaySeparator();
+      const newTodo = `<li id=${index} class="main__item">
+        <label class="main__item--label"></label>
+          <input type="text" class="main__form--input"></input>
+          <div class="main__item--buttons">
+          <button class="deleteButton">×</button>
+          <button class="toggleButton"></button>
+          <button onClick="handleEditTodo(event)" class="editButton"></button>
+          </div></li>`;
+      list.insertAdjacentHTML('afterbegin', newTodo);
+      const newTodoElement = document.getElementById(index);
+      newTodoElement.children[0].textContent = todo.todoDesc;
+      if (todo.completed === true) newTodoElement.classList.add('completed');
       saveLocalStorage();
     });
   }
@@ -77,12 +43,8 @@ const newTodo = (todoDesc) => {
   mountTodos();
 };
 
-const deleteTodo = (position) => {
-  const newTodos = [
-    ...todos.slice(0, position),
-    ...todos.slice(position + 1, todos.length),
-  ];
-  todos = newTodos;
+const deleteTodo = (index) => {
+  todos = todos.filter((item) => item !== todos[index]);
 };
 
 const toggleCompletedTodo = (index) => {
@@ -111,28 +73,8 @@ const toggleAllTodos = () => {
 };
 
 // Handlers
-const handleRemoveDOMElement = (id) => {
-  const toRemove = document.getElementById(id);
-  const list = document.querySelector('#list');
-  list.removeChild(toRemove);
-};
-
-const handleRemoveDynamicListeners = (input, e, callback) => {
-  input.removeEventListener('keydown', (event) => {
-    if (event.keyCode === 13) callback(e);
-  });
-};
-
-const handleDeleteTodo = (index, input, e, handleEditTodo) => {
-  handleRemoveDynamicListeners(input, e, handleEditTodo);
-  handleRemoveDOMElement(index);
-  deleteTodo(index);
-  saveLocalStorage();
-  mountTodos();
-};
 
 const handleAddEditListeners = (input, e, callback) => {
-  input.focus();
   input.addEventListener('keyup', (event) => {
     if (event.keyCode === 13) {
       callback(e);
@@ -141,15 +83,35 @@ const handleAddEditListeners = (input, e, callback) => {
   });
 };
 
-const handleEditSaveNewValue = (listItem, newDesc) => {
-  todos[listItem.id] = {
-    ...todos[listItem.id],
-    todoDesc: newDesc,
-  };
+const handleRemoveEditListeners = (input, e, callback) => {
+  input.removeEventListener('keyup', (event) => {
+    if (event.keyCode === 13) {
+      callback(e);
+      event.stopImmediatePropagation();
+    }
+  });
 };
 
-const handleEditTodo = (e) => {
-  const clickedListItem = e.target.parentNode.parentNode;
+const handleRemoveDOMElement = (id) => {
+  const toRemove = document.getElementById(id);
+  const list = document.querySelector('#list');
+  list.removeChild(toRemove);
+};
+
+const handleDeleteTodo = (index, input, e, handleEditTodo) => {
+  handleRemoveEditListeners(input, e, handleEditTodo);
+  handleRemoveDOMElement(index);
+  deleteTodo(index);
+  saveLocalStorage();
+  mountTodos();
+};
+
+const handleEditSaveNewValue = (listItem, newDesc) => {
+  todos[listItem.id] = { ...todos[listItem.id], todoDesc: newDesc };
+};
+
+const handleEditTodo = (event) => {
+  const clickedListItem = event.target.parentNode.parentNode;
   const label = clickedListItem.querySelector('label');
   const input = clickedListItem.querySelector('input[type=text');
   const editing = clickedListItem.classList.contains('editing');
@@ -161,27 +123,19 @@ const handleEditTodo = (e) => {
     handleEditSaveNewValue(clickedListItem, label.innerText);
   }
   clickedListItem.classList.toggle('editing');
+  input.focus();
+  handleAddEditListeners(input, event, handleEditTodo);
   saveLocalStorage();
-  handleAddEditListeners(input, e, handleEditTodo);
 };
 
 const mountDelegatedButtonEventListeners = (list) => {
   list.addEventListener('click', (e) => {
     const input = e.target.parentNode;
-    if (e.target.classList.contains('main__item')) {
-      toggleCompletedTodo(parseInt(e.target.id, 10));
-    }
-    if (e.target.classList.contains('main__item--label')) {
-      toggleCompletedTodo(parseInt(input.id, 10));
-    }
     if (e.target.className === 'deleteButton') {
-      handleDeleteTodo(parseInt(input.parentNode.id, 10), input, e, handleEditTodo);
+      handleDeleteTodo(input.parentNode.id, input, e, handleEditTodo);
     }
     if (e.target.className === 'toggleButton') {
-      toggleCompletedTodo(parseInt(e.target.parentNode.parentNode.id, 10));
-      handleEditTodo(e);
-    }
-    if (e.target.className === 'editButton') {
+      toggleCompletedTodo(e.target.parentNode.parentNode.id);
       handleEditTodo(e);
     }
   });
@@ -193,19 +147,13 @@ const mountStaticEventListeners = () => {
   const toggleAllButton = document.querySelector('#toggleAll');
   const toggleNewFormVisibility = document.querySelector('#toggleForm');
   mountDelegatedButtonEventListeners(list);
-
   newTodoForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const input = e.target[0].value;
-    newTodo(input);
+    newTodo(e.target[0].value);
     newTodoForm.reset();
     newTodoForm.classList.add('hide');
   });
-
-  toggleAllButton.addEventListener('click', () => {
-    toggleAllTodos();
-  });
-
+  toggleAllButton.addEventListener('click', () => toggleAllTodos());
   toggleNewFormVisibility.addEventListener('click', () => {
     newTodoForm.classList.toggle('hide');
     newTodoForm.children[0].focus();
