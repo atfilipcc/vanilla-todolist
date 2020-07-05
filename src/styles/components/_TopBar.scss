@@ -1,0 +1,52 @@
+.topbar {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background: $blue;
+	color: $text-blue;
+	padding: $m-size;
+}
+
+.topbar__title {
+  font-size: $l-size;
+	justify-content: center;
+	display: flex;
+	width: 100%;
+	font-family: Roboto;
+	font-weight: 700;
+}
+
+.topbar__buttons {
+	display: flex;
+	justify-content: center;
+}
+
+.topbar__buttons * {
+	color: white;
+	font-weight: 800;
+	align-items: center;
+	justify-content: center;
+	background: $red-orange;
+	border-bottom: 0.4rem solid darken($red-orange, 10%);
+}
+
+.topbar__buttons *:hover {
+	transition: ease;
+	transition-duration: 0.1s;
+	background: #dd3d52;
+	border-bottom: 0.4rem solid darken(#dd3d52, 10%);
+}
+
+@media (min-width: 475px) {
+	.topbar {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: baseline;
+	}
+	.topbar__title {
+		width: auto;
+	}
+	.topbar__buttons {
+		width: auto;
+	}
+}

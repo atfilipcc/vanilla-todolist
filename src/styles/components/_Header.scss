@@ -1,0 +1,24 @@
+.header {
+	background: $off-black;
+	color: white;
+	margin-bottom: $m-size;
+	padding: $l-size 0;
+}
+
+.header__title {
+	background: $off-black;
+	font-size: $l-size;
+	text-align: center;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+@media (min-width: $desktop-breakpoint) {
+	.header {
+		margin-bottom: $xl-size;
+	}
+	.header__title {
+		text-align: left;
+		margin-left: $l-size;
+	}
+}

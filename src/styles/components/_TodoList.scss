@@ -1,0 +1,85 @@
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: 0;
+	justify-content: center;
+}
+
+.list__message {
+	@extend .topbar;
+	text-align: center;
+	background-color: $dark-blue;
+	font-weight: bold;
+	font-size: 1.8rem;
+}
+
+.li {
+	color: white;
+	margin: 0 auto;
+	color: #fff;
+}
+
+.todo.completed {
+	transition: ease-in;
+	transition-duration: 0.5s;
+	order: 4;
+}
+
+.todo.completed label {
+	text-decoration: line-through;
+	text-decoration-color: $light-blue;
+	text-decoration-thickness: 1.2px;
+}
+
+.separator {
+	@extend .topbar;
+	text-align: center;
+	background-color: $dark-blue;
+	font-weight: bold;
+	font-size: 1.8rem;
+	order: 3;
+}
+
+p.separator {
+	display: none;
+}
+
+.todo.completed ~ p.separator {
+	display: block;
+}
+
+.main__bottom {
+	background-color: $blue;
+	height: $m-size;
+	order: 2;
+}
+
+.editing input[type='text'] {
+	display: flex;
+}
+
+.editing label {
+	display: none;
+}
+
+.hide {
+	display: none;
+}
+
+@media (min-width: $desktop-breakpoint) {
+	.header {
+		margin-bottom: $xl-size;
+	}
+	.header__title {
+		text-align: left;
+	}
+}
+
+@media (min-width: 475px) {
+	.todo__desc {
+		text-align: left;
+	}
+	.todo {
+		flex-direction: row;
+	}
+}
