@@ -17,7 +17,8 @@
 }
 
 .todo__desc--input {
-	background: $dark-blue;
+  background: $dark-blue;
+  text-align: center;
 	height: $xl-size;
 	display: flex;
 	border: none;
@@ -89,4 +90,13 @@
 	color: white;
 	width: 100%;
 	flex-grow: 1;
+}
+
+@media (min-width: 475px) {
+  .todo__desc--input {
+    text-align: left;
+  }
+  .todo__desc {
+    text-align: left;
+  }
 }
