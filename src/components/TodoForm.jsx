@@ -36,14 +36,14 @@ export default class TodoForm extends React.Component {
       handleToggleAllTodos={handleToggleAllTodos}
       handleDeleteAllTodos={handleDeleteAllTodos}
     />
+    {caughtError && (
+    <p className="form__error">{caughtError}</p>
+    )}
     <form
       name="todoForm"
       className="form hide"
       onSubmit={this.handleAddTodoLocal}
     >
-      {caughtError && (
-      <p className="form__error">{caughtError}</p>
-      )}
       <input type="text" className="form__input" placeholder="What will you do?" name="input" />
       <button type="submit" className="form__button">
         Add
