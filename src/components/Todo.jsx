@@ -56,13 +56,13 @@ class Todo extends Component {
 	viewTemplate = () => {
 	  const { index, todoDesc } = this.props;
 	  return (
-  <textbox
+  <p
     id={index}
     className="todo__desc"
-    onClick={() => this.handleChangeEditState()}
+    value={todoDesc}
   >
     {todoDesc}
-  </textbox>
+  </p>
 	  );
 	}
 

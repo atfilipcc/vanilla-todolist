@@ -64,17 +64,6 @@
 }
 
 @media (min-width: 475px) {
-	.topbar {
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: baseline;
-	}
-	.topbar__title {
-		width: auto;
-	}
-	.topbar__buttons {
-		width: auto;
-	}
 	.form {
 		flex-direction: row;
 	}

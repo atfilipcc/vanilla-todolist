@@ -12,20 +12,20 @@ const TopBar = ({ handleDeleteAllTodos, handleToggleAllTodos }) => (
           document.querySelector('.form__input').focus();
         }}
       >
-        New
+        New Todo
       </button>
       <button
         type="button"
         onClick={handleToggleAllTodos}
       >
-        Toggle
+        Toggle All
 
       </button>
       <button
         type="button"
         onClick={handleDeleteAllTodos}
       >
-        Clear
+        Clear List
 
       </button>
     </section>
