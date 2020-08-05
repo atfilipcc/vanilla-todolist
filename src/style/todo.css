@@ -687,7 +687,7 @@ html {
 }
 
 body {
-  background-color: #333745;
+  background-color: #f38375;
   font-family: Lato, Helvetica, Arial, sans-serif;
   font-size: 1.6rem;
 }
@@ -707,7 +707,7 @@ button {
 }
 
 .header {
-  background: #20222b;
+  background: #ef6351;
   color: white;
   margin-bottom: 1.6rem;
   padding: 2.8rem 0;
@@ -729,7 +729,7 @@ button {
 }
 
 .main {
-  background: #464b5e;
+  background: #fbc3bc;
   margin-bottom: 4.8rem;
   max-width: 100%;
   min-width: 100%;
@@ -744,12 +744,12 @@ button {
 }
 
 .main__form--input {
-  background: #333745;
+  background: #f38375;
   height: 4.8rem;
   display: flex;
   border: none;
-  color: #ccd4f7;
-  border-bottom: 0.4rem solid #282b36;
+  color: #ffffff;
+  border-bottom: 0.4rem solid #f16e5e;
   margin-bottom: 1.2rem;
   flex-grow: 1;
   width: 100%;
@@ -761,16 +761,16 @@ button {
   width: 100%;
   margin: 0 auto;
   color: white;
-  background: hotpink;
-  border-bottom: 0.4rem solid #ff369b;
+  background: #7651ef;
+  border-bottom: 0.4rem solid #5122eb;
   font-weight: 800;
 }
 
 .main__form--submit:hover {
   transition: ease;
   transition-duration: 0.1s;
-  background: #fd73df;
-  border-bottom: 0.4rem solid #fc41d4;
+  background: #7651ef;
+  border-bottom: 0.4rem solid #5122eb;
 }
 
 .main__formtitle {
@@ -787,8 +787,8 @@ button {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: #3c4251;
-  color: #ccd4f7;
+  background: #f7a399;
+  color: #ffffff;
   padding: 1.6rem;
 }
 
@@ -810,15 +810,15 @@ button {
   font-weight: 800;
   align-items: center;
   justify-content: center;
-  background: hotpink;
-  border-bottom: 0.4rem solid #ff369b;
+  background: #7651ef;
+  border-bottom: 0.4rem solid #5122eb;
 }
 
 .main__topbar--buttons *:hover {
   transition: ease;
   transition-duration: 0.1s;
-  background: #fd73df;
-  border-bottom: 0.4rem solid #fc41d4;
+  background: #7651ef;
+  border-bottom: 0.4rem solid #5122eb;
 }
 
 .main__item {
@@ -827,11 +827,11 @@ button {
   max-width: 100%;
   align-items: center;
   justify-content: space-between;
-  color: #ccd4f7;
+  color: #ffffff;
   font-size: 1.6rem;
   font-weight: bold;
   list-style: none;
-  background-color: #333745;
+  background-color: #f38375;
   list-style: none;
   padding: 1.6rem;
   margin: 1.6rem 1.2rem 1.6rem 1.2rem;
@@ -875,19 +875,19 @@ button {
 .main__item--buttons * {
   height: 4.8rem;
   width: 4.8rem;
-  background: hotpink;
+  background: #7651ef;
   text-align: center;
   font-weight: 600;
   color: white;
   padding: 0.4rem;
-  border-bottom: 0.4rem solid #ff369b;
+  border-bottom: 0.4rem solid #5122eb;
 }
 
 .main__item--buttons *:hover {
   transition: ease;
   transition-duration: 0.1s;
-  background: #fd73df;
-  border-bottom: 0.4rem solid #fc41d4;
+  background: #7651ef;
+  border-bottom: 0.4rem solid #5122eb;
 }
 
 .main__item--label {
@@ -924,13 +924,13 @@ button {
 
 .main__item.completed label {
   text-decoration: line-through;
-  text-decoration-color: #464b5e;
+  text-decoration-color: #fbc3bc;
   text-decoration-thickness: 1.2px;
 }
 
 .main__list--separator {
   text-align: center;
-  background-color: #333745;
+  background-color: #f38375;
   font-weight: bold;
   font-size: 1.8rem;
   order: 3;
@@ -949,7 +949,7 @@ li.completed ~ p.main__list--separator {
 }
 
 .main__bottom--space {
-  background-color: #3c4251;
+  background-color: #f7a399;
   height: 1.6rem;
   order: 2;
 }
